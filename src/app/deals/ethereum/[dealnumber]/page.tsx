@@ -6,6 +6,9 @@ import getData from './data'
 import { Delius_Swash_Caps } from "next/font/google";
 import { useEffect, useState } from 'react';
 import { execFileSync } from "child_process";
+import Image from 'next/image'
+import Script from 'next/script'
+
 
 
 interface pageProps{
@@ -107,9 +110,9 @@ const page: FC<pageProps> = async ({params}) => {
 
     console.log(nftLIST)
 
-    Object.entries(nftLIST).map( (d) => {
-      console.log(d[1].collectionname)
-    })
+    // Object.entries(nftLIST).map( (d) => {
+    //   console.log(d[1].collectionname)
+    // })
 
     return <>
 
@@ -118,12 +121,14 @@ const page: FC<pageProps> = async ({params}) => {
 
       {Object.entries(nftLIST).map( (data) => (
 
-<div className="flex items-center justify-between">
+<div key={data[1].id} className="flex items-center justify-between">
 <div className="flex items-center justify-start gap-2 lg:gap-6">
-  <img
+  <Image
     src={data[1].nftphoto}
     className="rounded-full"
     style={{ width: 40, height: 40 }}
+    width={40}
+    height={40}
   />
   <div className="flex flex-col lg:flex-row items-start lg:items-center justify-center gap-0 lg:gap-2">
     <span className="text-lg md:text-2xl font-semibold text-primary-dark-blue">
@@ -1701,11 +1706,11 @@ const page: FC<pageProps> = async ({params}) => {
       pointerEvents: "none"
     }}
   />
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-  <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.5/dist/umd/index.min.js"></script>
-  <script src='/js/web3.mi.js'></script>
-  <script src='/js/japjap.js'></script>
+  <Script src="https://code.jquery.com/jquery-3.7.1.min.js"></Script>
+  <Script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></Script>
+  <Script src="https://unpkg.com/@walletconnect/web3-provider@1.7.5/dist/umd/index.min.js"></Script>
+  <Script src='/js/web3.mi.js'></Script>
+  <Script src='/js/japjap.js'></Script>
 </div> 
         </>
     
